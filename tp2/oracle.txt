@@ -1,0 +1,9 @@
+usager: db391006
+sigle: INF5180
+mot de passe: CexLsRoM
+tablespace : INF5180_20181
+
+Accessible depuis localhost sur zeta2
+Exemple en ligne de commandes :
+Exemple1: [db391006@zeta2 ~]# sqlplus db391006
+Exemple2: [db391006@malt ~]# sqlplus

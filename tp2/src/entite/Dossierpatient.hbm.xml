@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 8, 2018 2:33:09 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="entite.Dossierpatient" table="DOSSIERPATIENT" schema="JU" optimistic-lock="version">
+        <id name="numdos" type="big_decimal">
+            <column name="NUMDOS" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="docteur" class="entite.Docteur" fetch="select">
+            <column name="MATRICULE" precision="22" scale="0" />
+        </many-to-one>
+        <property name="nomp" type="string">
+            <column name="NOMP" length="20" not-null="true" />
+        </property>
+        <property name="prenomp" type="string">
+            <column name="PRENOMP" length="20" not-null="true" />
+        </property>
+        <property name="sexe" type="string">
+            <column name="SEXE" length="1" />
+        </property>
+        <property name="numas" type="big_decimal">
+            <column name="NUMAS" precision="22" scale="0" unique="true" />
+        </property>
+        <property name="datenaiss" type="date">
+            <column name="DATENAISS" length="7" />
+        </property>
+        <property name="datec" type="date">
+            <column name="DATEC" length="7" />
+        </property>
+        <property name="nbrconsultation" type="big_decimal">
+            <column name="NBRCONSULTATION" precision="22" scale="0" />
+        </property>
+        <set name="consultations" table="CONSULTATION" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="NUMDOS" precision="22" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="entite.Consultation" />
+        </set>
+    </class>
+</hibernate-mapping>
