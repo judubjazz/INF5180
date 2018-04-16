@@ -1,5 +1,5 @@
 package entite;
-// Generated Apr 8, 2018 2:33:08 AM by Hibernate Tools 4.3.1
+// Generated Apr 8, 2018 2:33:08 AM by Tp2Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -19,11 +19,11 @@ public class Specialisationsalle  implements java.io.Serializable {
     }
 
 	
-    public Specialisationsalle(SpecialisationsalleId id, Salle salle, Typechirurgie typechirurgie) {
-        this.id = id;
-        this.salle = salle;
-        this.typechirurgie = typechirurgie;
-    }
+//    public Specialisationsalle(SpecialisationsalleId id, Salle salle, Typechirurgie typechirurgie) {
+//        this.id = id;
+//        this.salle = salle;
+//        this.typechirurgie = typechirurgie;
+//    }
     public Specialisationsalle(SpecialisationsalleId id, Salle salle, Typechirurgie typechirurgie, Date datec) {
        this.id = id;
        this.salle = salle;

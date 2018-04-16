@@ -1,5 +1,5 @@
 package entite;
-// Generated Apr 8, 2018 2:33:08 AM by Hibernate Tools 4.3.1
+// Generated Apr 8, 2018 2:33:08 AM by Tp2Hibernate Tools 4.3.1
 
 
 
@@ -19,12 +19,12 @@ public class Consultation  implements java.io.Serializable {
     }
 
 	
-    public Consultation(ConsultationId id, Docteur docteur, Dossierpatient dossierpatient, String diagnostic) {
-        this.id = id;
-        this.docteur = docteur;
-        this.dossierpatient = dossierpatient;
-        this.diagnostic = diagnostic;
-    }
+//    public Consultation(ConsultationId id, Docteur docteur, Dossierpatient dossierpatient, String diagnostic) {
+//        this.id = id;
+//        this.docteur = docteur;
+//        this.dossierpatient = dossierpatient;
+//        this.diagnostic = diagnostic;
+//    }
     public Consultation(ConsultationId id, Ordonnance ordonnance, Docteur docteur, Dossierpatient dossierpatient, String diagnostic) {
        this.id = id;
        this.ordonnance = ordonnance;
