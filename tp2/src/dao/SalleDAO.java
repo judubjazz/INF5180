@@ -9,10 +9,13 @@ import entite.Salle;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+
+
 /**
  * @author Zied Zaier < Zaier.Zied at uqam.ca>
  */
 public class SalleDAO {
+
 
     static Session session = null;
 
@@ -47,8 +50,4 @@ public class SalleDAO {
 //        session.close();
 
     }
-
-
-
-
 }

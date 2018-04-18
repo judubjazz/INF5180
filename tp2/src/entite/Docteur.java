@@ -20,7 +20,6 @@ public class Docteur  implements java.io.Serializable {
      private String adresse;
      private String niveau;
      private BigDecimal nbrpatients;
-     private BigDecimal nbrmoyenmedicaments;
      private Set consultations = new HashSet(0);
      private Set dossierpatients = new HashSet(0);
 
@@ -33,7 +32,7 @@ public class Docteur  implements java.io.Serializable {
         this.nomm = nomm;
         this.prenomm = prenomm;
     }
-    public Docteur(BigDecimal matricule, Specialite specialite, String nomm, String prenomm, String ville, String adresse, String niveau, BigDecimal nbrpatients, BigDecimal nbrmoyenmedicaments, Set consultations, Set dossierpatients) {
+    public Docteur(BigDecimal matricule, Specialite specialite, String nomm, String prenomm, String ville, String adresse, String niveau, BigDecimal nbrpatients, Set consultations, Set dossierpatients) {
        this.matricule = matricule;
        this.specialite = specialite;
        this.nomm = nomm;
@@ -42,7 +41,6 @@ public class Docteur  implements java.io.Serializable {
        this.adresse = adresse;
        this.niveau = niveau;
        this.nbrpatients = nbrpatients;
-       this.nbrmoyenmedicaments = nbrmoyenmedicaments;
        this.consultations = consultations;
        this.dossierpatients = dossierpatients;
     }
@@ -103,13 +101,7 @@ public class Docteur  implements java.io.Serializable {
     public void setNbrpatients(BigDecimal nbrpatients) {
         this.nbrpatients = nbrpatients;
     }
-    public BigDecimal getNbrmoyenmedicaments() {
-        return this.nbrmoyenmedicaments;
-    }
-    
-    public void setNbrmoyenmedicaments(BigDecimal nbrmoyenmedicaments) {
-        this.nbrmoyenmedicaments = nbrmoyenmedicaments;
-    }
+
     public Set getConsultations() {
         return this.consultations;
     }

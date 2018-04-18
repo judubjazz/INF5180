@@ -4,6 +4,8 @@ import entite.Specialite;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+
+
 public class SpecialiteDAO {
 
     static Session session = null;

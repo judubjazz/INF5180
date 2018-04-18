@@ -1,3 +1,5 @@
+package tp2Hibernate;
+
 import dao.*;
 import entite.*;
 import org.hibernate.HibernateException;
@@ -11,10 +13,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
-import java.util.Set;
-
-
-import static java.sql.Types.NULL;
 
 public class Tp2Hibernate {
     private static final SessionFactory ourSessionFactory;
@@ -50,6 +48,10 @@ public class Tp2Hibernate {
             BigDecimal big13 = new BigDecimal(13);
             BigDecimal big14 = new BigDecimal(14);
             BigDecimal big15 = new BigDecimal(15);
+            BigDecimal big16 = new BigDecimal(16);
+            BigDecimal big17 = new BigDecimal(17);
+            BigDecimal big18 = new BigDecimal(18);
+            BigDecimal big19 = new BigDecimal(19);
             BigDecimal big100 = new BigDecimal(100);
             BigDecimal big0 = new BigDecimal(0);
             BigDecimal big1 = new BigDecimal(1);
@@ -60,59 +62,56 @@ public class Tp2Hibernate {
             /**Set date**/
             Calendar cal = Calendar.getInstance();
 
-            Date date1=setDate(cal,2010,10, 10);
-            Date date2=setDate(cal,2011,11, 11);
-            Date date3=setDate(cal,2011,11, 11);
+            Date date1=setDate(cal,2014,10, 14);
+            Date date2=setDate(cal,2015,11, 15);
+            Date date3=setDate(cal,2016,11, 16);
             Date dateNaissance=setDate(cal,2000,1, 1);
 
 
 //            Specialite(BigDecimal code, String titre, String description, Set docteurs
-            Specialite specialite1 = new Specialite(big10,"Esthetique","Facial", new HashSet());
-            Specialite specialite2 = new Specialite(big11,"Urgentiste","Accident",new HashSet());
-            Specialite specialite3 = new Specialite(big12,"Opthamologiste","Chirurgie", new HashSet());
+            Specialite specialite1 = new Specialite(big14,"Esthetique","Facial", new HashSet());
+            Specialite specialite2 = new Specialite(big15,"Urgentiste","Accident",new HashSet());
+            Specialite specialite3 = new Specialite(big16,"Opthamologiste","Chirurgie", new HashSet());
 
 
 //            Salle(BigDecimal idsalle, String nom, Set specialisationsalles, Set chirurgies
-            Salle salle1 = new Salle(big10, "wilfred", new HashSet(), new HashSet());
-            Salle salle2 = new Salle(big11, "calixa", new HashSet(), new HashSet());
-            Salle salle3 = new Salle(big12, "abraham", new HashSet(), new HashSet());
+            Salle salle1 = new Salle(big14, "wilfred", new HashSet(), new HashSet());
+            Salle salle2 = new Salle(big15, "calixa", new HashSet(), new HashSet());
+            Salle salle3 = new Salle(big16, "abraham", new HashSet(), new HashSet());
 
 
 //            Categories(BigDecimal idcategorie, String nom, String description, Set medicaments
-            Categories categories1 = new Categories(big10, "comprime", "comprime", new HashSet());
-            Categories categories2 = new Categories(big11, "gelule", "gelule",new HashSet());
-            Categories categories3 = new Categories(big12, "sirop", "sirop",new HashSet());
+            Categories categories1 = new Categories(big14, "comprime", "comprime", new HashSet());
+            Categories categories2 = new Categories(big15, "gelule", "gelule",new HashSet());
+            Categories categories3 = new Categories(big16, "sirop", "sirop",new HashSet());
 
 
 //            Typechirurgie(BigDecimal idtype, String nom, String description, Set chirurgies, Set specialisationsalle
-            Typechirurgie typechirurgie1 = new Typechirurgie(big10,"chirugie dentaire", "bouche",new HashSet(),new HashSet());
-            Typechirurgie typechirurgie2 = new Typechirurgie(big11,"chirugie plastique", "esthetique",new HashSet(),new HashSet());
-            Typechirurgie typechirurgie3 = new Typechirurgie(big12,"occulaire", "yeux",new HashSet(),new HashSet());
+            Typechirurgie typechirurgie1 = new Typechirurgie(big14,"chirugie dentaire", "bouche",new HashSet(),new HashSet());
+            Typechirurgie typechirurgie2 = new Typechirurgie(big15,"chirugie plastique", "esthetique",new HashSet(),new HashSet());
+            Typechirurgie typechirurgie3 = new Typechirurgie(big16,"occulaire", "yeux",new HashSet(),new HashSet());
 
 
 //            Ordonnance(BigDecimal numord, String recommandations, String type, Date datec, BigDecimal nbrmedicaments, Set ordonnancemedicamentses, Set consultations, Set ordonnancechirurgies
-            Ordonnance ordonnance1 = new Ordonnance(big10, "ne pas manger", "Médicaments", date1, big0,new HashSet(),new HashSet(),new HashSet());
-            Ordonnance ordonnance2 = new Ordonnance(big11, "ne pas boire", "Chirurgie", date2, big0,new HashSet(),new HashSet(),new HashSet());
-            Ordonnance ordonnance3 = new Ordonnance(big12, "ne rien faire", "Chirurgie", date3, big0,new HashSet(),new HashSet(),new HashSet());
-            Ordonnance ordonnance4 = new Ordonnance(big13, "ne rien faire", "Médicaments", date3, big0,new HashSet(),new HashSet(),new HashSet());
-
-            Ordonnance ordonnance5 = new Ordonnance(big100, "prier", "Médicaments", date1, v100,new HashSet(),new HashSet(),new HashSet());
+            Ordonnance ordonnance1 = new Ordonnance(big14, "ne pas manger", "Médicaments", date1, big14,new HashSet(),new HashSet(),new HashSet());
+            Ordonnance ordonnance2 = new Ordonnance(big15, "ne pas boire", "Chirurgie", date2, big15,new HashSet(),new HashSet(),new HashSet());
+            Ordonnance ordonnance3 = new Ordonnance(big16, "ne rien faire", "Chirurgie", date3, big16,new HashSet(),new HashSet(),new HashSet());
 
 
 //            BigDecimal matricule, Specialite specialite, String nomm, String prenomm, String ville, String adresse, String niveau, BigDecimal nbrpatients, BigDecimal nbrmoyenmedicaments, Set consultations, Set dossierpatients
-            Docteur docteur1 = new Docteur(big10,specialite1, "Dr", "House","NY", "10 dix","Étudiant",big0,big0,new HashSet(), new HashSet() );
-            Docteur docteur2 = new Docteur(big11,specialite2, "Dr", "Evil","NY", "11 onze","Interne",big0,big0,new HashSet(), new HashSet());
-            Docteur docteur3 = new Docteur(big12,specialite3, "Dr", "Green Thumb","NY", "12 douze","Docteur",big0,big0,new HashSet(), new HashSet());
+            Docteur docteur1 = new Docteur(big14,specialite1, "Dr", "House","NY", "10 dix","Étudiant",big14,new HashSet(), new HashSet() );
+            Docteur docteur2 = new Docteur(big15,specialite2, "Dr", "Evil","NY", "11 onze","Interne",big15,new HashSet(), new HashSet());
+            Docteur docteur3 = new Docteur(big16,specialite3, "Dr", "Green Thumb","NY", "12 douze","Docteur",big16,new HashSet(), new HashSet());
 
 //            public Dossierpatient(BigDecimal numdos, Docteur docteur, String nomp, String prenomp, String sexe, BigDecimal numas, Date datenaiss, Date datec, BigDecimal nbrconsultation, Set consultations)
-            Dossierpatient dossierpatient1 = new Dossierpatient(big10,docteur1, "bob", "inette", "M", big10,dateNaissance,date1,big10,new HashSet());
-            Dossierpatient dossierpatient2 = new Dossierpatient(big11,docteur2, "guy", "lafleur", "M", big11,dateNaissance,date2,big11,new HashSet());
-            Dossierpatient dossierpatient3 = new Dossierpatient(big12,docteur3, "jojo", "savard", "F", big12,dateNaissance,date3,big12,new HashSet());
+            Dossierpatient dossierpatient1 = new Dossierpatient(big14,docteur1, "bob", "inette", "M", big14,dateNaissance,date1,big14,new HashSet());
+            Dossierpatient dossierpatient2 = new Dossierpatient(big15,docteur2, "guy", "lafleur", "M", big15,dateNaissance,date2,big15,new HashSet());
+            Dossierpatient dossierpatient3 = new Dossierpatient(big16,docteur3, "jojo", "savard", "F", big16,dateNaissance,date3,big16,new HashSet());
 
 
-            ConsultationId consultationId1= new ConsultationId(big10,big10,date1);
-            ConsultationId consultationId2= new ConsultationId(big11,big11,date2);
-            ConsultationId consultationId3= new ConsultationId(big12,big12,date3);
+            ConsultationId consultationId1= new ConsultationId(big14,big14,date1);
+            ConsultationId consultationId2= new ConsultationId(big15,big15,date2);
+            ConsultationId consultationId3= new ConsultationId(big16,big16,date3);
 //                      (ConsultationId id, Ordonnance ordonnance, Docteur docteur, Dossierpatient dossierpatient, String diagnostic)
             Consultation consultation1 = new Consultation(consultationId1,ordonnance1,docteur1,dossierpatient1,"inflamation" );
             Consultation consultation2 = new Consultation(consultationId2,ordonnance2,docteur2,dossierpatient2,"coupure" );
@@ -122,23 +121,23 @@ public class Tp2Hibernate {
 
 
 //            Chirurgie(BigDecimal idchir, Salle salle, Typechirurgie typechirurgie, Date datechirurgie, BigDecimal heuredebut, BigDecimal heurefin, Set ordonnancechirurgies)
-            Chirurgie chirurgie1 = new Chirurgie(big10,salle1,typechirurgie1,date1,big10,big11,new HashSet());
-            Chirurgie chirurgie2 = new Chirurgie(big11,salle2,typechirurgie2,date2,big12,big13,new HashSet());
-            Chirurgie chirurgie3 = new Chirurgie(big12,salle3,typechirurgie3,date3,big13,big14,new HashSet());
+            Chirurgie chirurgie1 = new Chirurgie(big14,salle1,typechirurgie1,date1,big14,big15,new HashSet());
+            Chirurgie chirurgie2 = new Chirurgie(big15,salle2,typechirurgie2,date2,big16,big17,new HashSet());
+            Chirurgie chirurgie3 = new Chirurgie(big16,salle3,typechirurgie3,date3,big18,big19,new HashSet());
 //            Chirurgie chirurgie3 = new Chirurgie(big12);
 
-            OrdonnancechirurgieId ordonnancechirurgieId1= new OrdonnancechirurgieId(big10,big10);
-            OrdonnancechirurgieId ordonnancechirurgieId2= new OrdonnancechirurgieId(big11,big11);
-            OrdonnancechirurgieId ordonnancechirurgieId3= new OrdonnancechirurgieId(big12,big12);
+            OrdonnancechirurgieId ordonnancechirurgieId1= new OrdonnancechirurgieId(big14,big14);
+            OrdonnancechirurgieId ordonnancechirurgieId2= new OrdonnancechirurgieId(big15,big15);
+            OrdonnancechirurgieId ordonnancechirurgieId3= new OrdonnancechirurgieId(big16,big16);
 //            Ordonnancechirurgie(OrdonnancechirurgieId id, Ordonnance ordonnance, Chirurgie chirurgie, BigDecimal rang)
-            Ordonnancechirurgie ordonnancechirurgie1 = new Ordonnancechirurgie(ordonnancechirurgieId1,ordonnance1,chirurgie1,big10);
-            Ordonnancechirurgie ordonnancechirurgie2 = new Ordonnancechirurgie(ordonnancechirurgieId2,ordonnance2,chirurgie2,big11);
-            Ordonnancechirurgie ordonnancechirurgie3 = new Ordonnancechirurgie(ordonnancechirurgieId3,ordonnance3,chirurgie3,big12);
+            Ordonnancechirurgie ordonnancechirurgie1 = new Ordonnancechirurgie(ordonnancechirurgieId1,ordonnance1,chirurgie1,big14);
+            Ordonnancechirurgie ordonnancechirurgie2 = new Ordonnancechirurgie(ordonnancechirurgieId2,ordonnance2,chirurgie2,big15);
+            Ordonnancechirurgie ordonnancechirurgie3 = new Ordonnancechirurgie(ordonnancechirurgieId3,ordonnance3,chirurgie3,big16);
 
 
-            SpecialisationsalleId specialisationsalleId1= new SpecialisationsalleId(big10,big10);
-            SpecialisationsalleId specialisationsalleId2= new SpecialisationsalleId(big11,big11);
-            SpecialisationsalleId specialisationsalleId3= new SpecialisationsalleId(big12,big12);
+            SpecialisationsalleId specialisationsalleId1= new SpecialisationsalleId(big14,big14);
+            SpecialisationsalleId specialisationsalleId2= new SpecialisationsalleId(big15,big15);
+            SpecialisationsalleId specialisationsalleId3= new SpecialisationsalleId(big16,big16);
 //            Specialisationsalle(SpecialisationsalleId id, Salle salle, Typechirurgie typechirurgie, Date datec
             Specialisationsalle specialisationsalle1 = new Specialisationsalle(specialisationsalleId1,salle1,typechirurgie1,date1);
             Specialisationsalle specialisationsalle2 = new Specialisationsalle(specialisationsalleId2,salle2,typechirurgie2,date2);
@@ -146,18 +145,18 @@ public class Tp2Hibernate {
 
 
 //            Medicament(BigDecimal idmed, Categories categories, String nommed, BigDecimal prix, Set ordonnancemedicaments
-            Medicament medicament1 = new Medicament(big10,categories1,"colax",big10,new HashSet());
-            Medicament medicament2 = new Medicament(big11,categories2,"flex",big11,new HashSet());
-            Medicament medicament3 = new Medicament(big12,categories3,"mirem", big12, new HashSet());
+            Medicament medicament1 = new Medicament(big14,categories1,"colax",big16,new HashSet());
+            Medicament medicament2 = new Medicament(big15,categories2,"flex",big15,new HashSet());
+            Medicament medicament3 = new Medicament(big16,categories3,"mirem", big14, new HashSet());
 
 
-            OrdonnancemedicamentsId ordonnancemedicamentsId1 = new OrdonnancemedicamentsId(big10,big10);
-            OrdonnancemedicamentsId ordonnancemedicamentsId2 = new OrdonnancemedicamentsId(big11,big11);
-            OrdonnancemedicamentsId ordonnancemedicamentsId3 = new OrdonnancemedicamentsId(big12,big12);
+            OrdonnancemedicamentsId ordonnancemedicamentsId1 = new OrdonnancemedicamentsId(big14,big14);
+            OrdonnancemedicamentsId ordonnancemedicamentsId2 = new OrdonnancemedicamentsId(big15,big15);
+            OrdonnancemedicamentsId ordonnancemedicamentsId3 = new OrdonnancemedicamentsId(big16,big16);
 //            Ordonnancemedicaments(OrdonnancemedicamentsId id, Ordonnance ordonnance, Medicament medicament, BigDecimal nbboites
-            Ordonnancemedicaments ordonnancemedicaments1 = new Ordonnancemedicaments(ordonnancemedicamentsId1,ordonnance1,medicament1,big10);
-            Ordonnancemedicaments ordonnancemedicaments2 = new Ordonnancemedicaments(ordonnancemedicamentsId2,ordonnance2,medicament2,big11);
-            Ordonnancemedicaments ordonnancemedicaments3 = new Ordonnancemedicaments(ordonnancemedicamentsId3,ordonnance3,medicament3,big12);
+            Ordonnancemedicaments ordonnancemedicaments1 = new Ordonnancemedicaments(ordonnancemedicamentsId1,ordonnance1,medicament1,big14);
+            Ordonnancemedicaments ordonnancemedicaments2 = new Ordonnancemedicaments(ordonnancemedicamentsId2,ordonnance2,medicament2,big15);
+            Ordonnancemedicaments ordonnancemedicaments3 = new Ordonnancemedicaments(ordonnancemedicamentsId3,ordonnance3,medicament3,big16);
 
 
 /**SET CREATION**/
@@ -295,7 +294,6 @@ public class Tp2Hibernate {
             OrdonnanceDAO.insert(ordonnance1);
             OrdonnanceDAO.insert(ordonnance2);
             OrdonnanceDAO.insert(ordonnance3);
-            OrdonnanceDAO.insert(ordonnance4);
 
             DocteurDAO.insert(docteur1);
             DocteurDAO.insert(docteur2);

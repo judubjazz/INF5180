@@ -4,12 +4,14 @@ import entite.Docteur;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+
+
 public class DocteurDAO {
 
     static Session session = null;
 
     public static void insert(Docteur d) {
-        session = HibernateUtil.getSession();
+        session =HibernateUtil.getSession();
 
         Transaction tx = session.beginTransaction();
         session.save(d);
