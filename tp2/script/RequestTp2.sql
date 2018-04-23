@@ -6,10 +6,10 @@ Where D.matricule = cons.CodeDocteur And cons.numOrd = oc.numOrd AND oc.IDCHIR =
 Group By D.matricule, D.nomM, D.prenomM;
 
 --1b)afficher le nombre de chirurgies par salle
-Select S.IDSALLE, S.nom, count(OC.idChir) as nbrChirurgies
-from SALLE S, CHIRURGIE C, ORDONNANCECHIRURGIE OC
-where s.IDSALLE = c.IDSALLE And c.IDCHIR = oc.IDCHIR
-group by s.IDSALLE, s.NOM;
+-- Select S.IDSALLE, S.nom, count(OC.idChir) as nbrChirurgies
+-- from SALLE S, CHIRURGIE C, ORDONNANCECHIRURGIE OC
+-- where s.IDSALLE = c.IDSALLE And c.IDCHIR = oc.IDCHIR
+-- group by s.IDSALLE, s.NOM;
 
 --1c)afficher le nombre de chirurgies par type.
 Select TC.IDTYPE, TC.nom, count(*) as nbrChirurgies
@@ -25,10 +25,10 @@ Where c.CodeDocteur = d.matricule
 Group By d.matricule, d.nomM, d.prenomM;
 
 --2b)afficher le nombre de consultations par spécialité.
-Select S.Code, S.Titre, Count(*) as nbrConsultation
-from SPECIALITE S, DOCTEUR D, CONSULTATION C
-Where C.CODEDOCTEUR = D.MATRICULE And D.SPECIALITE = S.CODE
-GROUP BY s.CODE,s.TITRE;
+-- Select S.Code, S.Titre, Count(*) as nbrConsultation
+-- from SPECIALITE S, DOCTEUR D, CONSULTATION C
+-- Where C.CODEDOCTEUR = D.MATRICULE And D.SPECIALITE = S.CODE
+-- GROUP BY s.CODE,s.TITRE;
 
 -- 3a) AFFICHER LE NOMBRE DE CONSULTATION PAR ANNEE
 
@@ -37,9 +37,9 @@ From Consultation c
 group by extract (year from dateC);
 
 -- 3b) afficher le nombre de consultations par mois.
-select extract (MONTH from dateC) As month, count(*) as nbrConsultations
-From CONSULTATION C
-group by extract (MONTH from dateC);
+-- select extract (MONTH from dateC) As month, count(*) as nbrConsultations
+-- From CONSULTATION C
+-- group by extract (MONTH from dateC);
 
 
 -- 4a) Afficher le nombre de medicaments prescrits par docteur
@@ -51,24 +51,32 @@ Group By D.matricule, D.nomM, D.prenomM;
 
 -- 4b) afficher le nombre moyen de médicaments prescrits par mois
 
-Select extract ( month from C.dateC) as mois, Sum(o.nbrMedicaments)/12 as nbrMoyenMedicamentsParMois
-From CONSULTATION C, ORDONNANCE O
-Where C.NUMORD = o.NUMORD
-Group By extract ( month from C.dateC);
+-- Select extract ( month from C.dateC) as mois, Sum(o.nbrMedicaments)/12 as nbrMoyenMedicamentsParMois
+-- From CONSULTATION C, ORDONNANCE O
+-- Where C.NUMORD = o.NUMORD
+-- Group By extract ( month from C.dateC);
 
 
 
 -- -- 5) RATIO DES CHIRURGIES VERSUS TRAITEMENTS MËDICAMENTEUX PAR ANNEES.
-Select extract (year from o.DATEC) AS annee, (select count(*) from chirurgie c)/(SELECT COUNT(*) from ORDONNANCE o WHERE o.TYPE = 'Médicaments') as ratio
-from chirurgie c,ORDONNANCE o
-where extract(YEAR from c.DATECHIRURGIE) = extract (year from o.DATEC)
-group by extract (year from o.DATEC);
+create or replace view TRAITEMENTMEDICAMENTEUX (annee, nbr) AS
+  Select  extract (year from o.DATEC) as annee, count(*) as nbr
+  from ORDONNANCE o , CHIRURGIE c
+  where o.type = 'Médicaments' AND extract (year from c.DATECHIRURGIE) = extract (year from o.DATEC)
+  group by o.DATEC
+  ORDER BY annee;
 
---5b) Ratio moyen des chirurgies versus traitements médicamenteux par mois
-Select extract (month from c.DATECHIRURGIE) AS mois, (select count(*) from chirurgie c)/(SELECT COUNT(*) from ORDONNANCE o WHERE o.TYPE = 'Médicaments') as ratio
-from chirurgie c,ORDONNANCE o
-where extract(MONTH from c.DATECHIRURGIE) = extract (MONTH from o.DATEC)
-group by extract (month from c.DATECHIRURGIE);
+create or replace view CHIRURGIECOMPLETE (annee, nbr) AS
+  Select  extract (year from o.DATEC) as annee, count(*) as nbr
+  from ORDONNANCE o , CHIRURGIE c
+  where extract (year from c.DATECHIRURGIE) = extract (year from o.DATEC)
+  group by o.DATEC
+  ORDER BY annee;
 
-SELECT COUNT(*) from ORDONNANCE o WHERE o.TYPE = 'Médicaments';
-select count(*) from chirurgie c;
+
+select CHIRURGIECOMPLETE.annee, count(CHIRURGIECOMPLETE.nbr)/count(TRAITEMENTMEDICAMENTEUX.nbr) as ratio
+from CHIRURGIECOMPLETE JOIN TRAITEMENTMEDICAMENTEUX on CHIRURGIECOMPLETE.annee = TRAITEMENTMEDICAMENTEUX.annee
+group by CHIRURGIECOMPLETE.annee, CHIRURGIECOMPLETE.nbr, TRAITEMENTMEDICAMENTEUX.annee, TRAITEMENTMEDICAMENTEUX.nbr;
+
+
+

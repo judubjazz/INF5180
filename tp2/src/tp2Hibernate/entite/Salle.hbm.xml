@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//tp2Hibernate.Tp2Hibernate/tp2Hibernate.Tp2Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 8, 2018 2:33:09 AM by tp2Hibernate.Tp2Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="tp2Hibernate.entite.Salle" table="SALLE" schema="JU" optimistic-lock="version">
+        <id name="idsalle" type="big_decimal">
+            <column name="IDSALLE" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="nom" type="string">
+            <column name="NOM" length="20" not-null="true" />
+        </property>
+        <set name="specialisationsalles" table="SPECIALISATIONSALLE" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDSALLE" precision="22" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="tp2Hibernate.entite.Specialisationsalle" />
+        </set>
+        <set name="chirurgies" table="CHIRURGIE" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDSALLE" precision="22" scale="0" />
+            </key>
+            <one-to-many class="tp2Hibernate.entite.Chirurgie" />
+        </set>
+    </class>
+</hibernate-mapping>
