@@ -9,7 +9,7 @@ public class SpecialisationSalleDAO {
     static Session session = null;
 
     public static void insert(Specialisationsalle s) {
-        session = HibernateUtil.getSession();
+        session = tp2Hibernate.Tp2Hibernate.getSession();
 
         Transaction tx = session.beginTransaction();
         session.save(s);
@@ -19,7 +19,7 @@ public class SpecialisationSalleDAO {
     }
 
     public static void update(Specialisationsalle s, String name) {
-        session = HibernateUtil.getSession();
+        session = tp2Hibernate.Tp2Hibernate.getSession();
 
         Transaction tx = session.beginTransaction();
 
@@ -31,7 +31,7 @@ public class SpecialisationSalleDAO {
     }
 
     public static void delete(Specialisationsalle s) {
-        session = HibernateUtil.getSession();
+        session = tp2Hibernate.Tp2Hibernate.getSession();
 
         Transaction tx = session.beginTransaction();
         session.delete(s);

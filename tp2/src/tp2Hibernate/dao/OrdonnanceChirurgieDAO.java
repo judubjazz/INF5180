@@ -9,7 +9,7 @@ public class OrdonnanceChirurgieDAO {
     static Session session = null;
 
     public static void insert(Ordonnancechirurgie oc) {
-        session = HibernateUtil.getSession();
+        session = tp2Hibernate.Tp2Hibernate.getSession();
 
         Transaction tx = session.beginTransaction();
         session.save(oc);
@@ -19,7 +19,7 @@ public class OrdonnanceChirurgieDAO {
     }
 
     public static void update(Ordonnancechirurgie oc, String name) {
-        session = HibernateUtil.getSession();
+        session = tp2Hibernate.Tp2Hibernate.getSession();
 
         Transaction tx = session.beginTransaction();
 
@@ -31,7 +31,7 @@ public class OrdonnanceChirurgieDAO {
     }
 
     public static void delete(Ordonnancechirurgie oc) {
-        session = HibernateUtil.getSession();
+        session = tp2Hibernate.Tp2Hibernate.getSession();
 
         Transaction tx = session.beginTransaction();
         session.delete(oc);

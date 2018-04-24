@@ -9,7 +9,7 @@ public class TypeChirurgieDAO {
     static Session session = null;
 
     public static void insert(Typechirurgie tc) {
-        session = HibernateUtil.getSession();
+        session = tp2Hibernate.Tp2Hibernate.getSession();
 
         Transaction tx = session.beginTransaction();
         session.save(tc);
@@ -19,7 +19,7 @@ public class TypeChirurgieDAO {
     }
 
     public static void update(Typechirurgie tc, String name) {
-        session = HibernateUtil.getSession();
+        session = tp2Hibernate.Tp2Hibernate.getSession();
 
         Transaction tx = session.beginTransaction();
 
@@ -31,7 +31,7 @@ public class TypeChirurgieDAO {
     }
 
     public static void delete(Typechirurgie tc) {
-        session = HibernateUtil.getSession();
+        session = tp2Hibernate.Tp2Hibernate.getSession();
 
         Transaction tx = session.beginTransaction();
         session.delete(tc);

@@ -11,7 +11,7 @@ public class SpecialiteDAO {
     static Session session = null;
 
     public static void insert(Specialite s) {
-        session = HibernateUtil.getSession();
+        session = tp2Hibernate.Tp2Hibernate.getSession();
 
         Transaction tx = session.beginTransaction();
         session.save(s);
@@ -21,7 +21,7 @@ public class SpecialiteDAO {
     }
 
     public static void update(Specialite s, String name) {
-        session = HibernateUtil.getSession();
+        session = tp2Hibernate.Tp2Hibernate.getSession();
 
         Transaction tx = session.beginTransaction();
 
@@ -33,7 +33,7 @@ public class SpecialiteDAO {
     }
 
     public static void delete(Specialite s) {
-        session = HibernateUtil.getSession();
+        session = tp2Hibernate.Tp2Hibernate.getSession();
 
         Transaction tx = session.beginTransaction();
         session.delete(s);

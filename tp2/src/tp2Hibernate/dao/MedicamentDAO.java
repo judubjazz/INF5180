@@ -9,7 +9,7 @@ public class MedicamentDAO {
     static Session session = null;
 
     public static void insert(Medicament m) {
-        session = HibernateUtil.getSession();
+        session = tp2Hibernate.Tp2Hibernate.getSession();
 
         Transaction tx = session.beginTransaction();
         session.save(m);
@@ -19,7 +19,7 @@ public class MedicamentDAO {
     }
 
     public static void update(Medicament medicament, String name) {
-        session = HibernateUtil.getSession();
+        session = tp2Hibernate.Tp2Hibernate.getSession();
 
         Transaction tx = session.beginTransaction();
 
@@ -31,7 +31,7 @@ public class MedicamentDAO {
     }
 
     public static void delete(Medicament m) {
-        session = HibernateUtil.getSession();
+        session = tp2Hibernate.Tp2Hibernate.getSession();
 
         Transaction tx = session.beginTransaction();
         session.delete(m);

@@ -1,5 +1,5 @@
 package tp2Hibernate.entite;
-// Generated Apr 8, 2018 2:33:08 AM by Tp2Hibernate Tools 4.3.1
+// Generated Apr 8, 2018 2:33:08 AM by HibernateUtil Tools 4.3.1
 
 
 

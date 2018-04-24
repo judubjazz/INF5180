@@ -47,6 +47,7 @@ Contributor(s):
         <property name="hibernate.connection.username">ju</property>
         <property name="hibernate.connection.password">ju</property>
         <property name="hibernate.connection.pool_size">1</property>
+
         <!--<property name="show_sql">true</property>-->
         <mapping resource="tp2Hibernate/entite/Ordonnancemedicaments.hbm.xml"/>
         <mapping resource="tp2Hibernate/entite/Medicament.hbm.xml"/>

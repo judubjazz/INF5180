@@ -11,11 +11,11 @@ Group By D.matricule, D.nomM, D.prenomM;
 -- where s.IDSALLE = c.IDSALLE And c.IDCHIR = oc.IDCHIR
 -- group by s.IDSALLE, s.NOM;
 
---1c)afficher le nombre de chirurgies par type.
-Select TC.IDTYPE, TC.nom, count(*) as nbrChirurgies
-from CHIRURGIE C, ORDONNANCECHIRURGIE OC, TYPECHIRURGIE TC
-where C.IDCHIR = OC.IDCHIR And c.IDType = TC.IDTYPE
-group by TC.IDTYPE, TC.nom;
+-- --1c)afficher le nombre de chirurgies par type.
+-- Select TC.IDTYPE, TC.nom, count(*) as nbrChirurgies
+-- from CHIRURGIE C, ORDONNANCECHIRURGIE OC, TYPECHIRURGIE TC
+-- where C.IDCHIR = OC.IDCHIR And c.IDType = TC.IDTYPE
+-- group by TC.IDTYPE, TC.nom;
 
 -- 2a) Afficher le nombre de consultations par docteurs
 

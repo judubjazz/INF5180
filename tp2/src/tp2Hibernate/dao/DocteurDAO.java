@@ -11,7 +11,7 @@ public class DocteurDAO {
     static Session session = null;
 
     public static void insert(Docteur d) {
-        session =HibernateUtil.getSession();
+        session = tp2Hibernate.Tp2Hibernate.getSession();
 
         Transaction tx = session.beginTransaction();
         session.save(d);
@@ -21,7 +21,7 @@ public class DocteurDAO {
     }
 
     public static void update(Docteur d, String name) {
-        session = HibernateUtil.getSession();
+        session = tp2Hibernate.Tp2Hibernate.getSession();
 
         Transaction tx = session.beginTransaction();
 //
@@ -33,7 +33,7 @@ public class DocteurDAO {
     }
 
     public static void delete(Docteur d) {
-        session = HibernateUtil.getSession();
+        session = tp2Hibernate.Tp2Hibernate.getSession();
 
         Transaction tx = session.beginTransaction();
         session.delete(d);

@@ -92,24 +92,20 @@ public class Tp2Jdbc {
         try{
             //STEP 2: enregistrement du  driver JDBC
             Class.forName(JDBC_DRIVER);
-
             //STEP 3: Ouvrir une connexion
             System.out.println("Connecting to database...");
             conn = DriverManager.getConnection(DB_URL,USER,PASS);
 
-            try {
-                JdbcUtils.populateTables(conn);
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+            JdbcUtils.populateTables(conn);
 
             stmt = conn.createStatement();
-
             requete1(stmt);
             requete2(stmt);
             requete3(stmt);
-            requete4(stmt);
-            requete5(stmt);
+
+            //pas à évaluer
+//            requete4(stmt);
+//            requete5(stmt);
 
             //clean up
             stmt.close();
@@ -120,6 +116,8 @@ public class Tp2Jdbc {
         }catch(Exception e){
             //Gerer les erreur pour  Class.forName
             e.printStackTrace();
+        }finally {
+
         }
 
         System.out.println("\nGoodbye!");
